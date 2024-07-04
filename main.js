@@ -18,6 +18,10 @@ let addButton = document.getElementById('add-button');
 addButton.addEventListener('click', addTask);
 let taskList = [];
 
+const icon = document.createElement('i');
+
+icon.innerHTML = '<i class="far fa-trash-alt"></i>';
+
 function addTask() {
   // let taskContent = taskInput.value;
   let task = {
@@ -28,7 +32,14 @@ function addTask() {
   taskList.push(task);
   console.log('clicked');
   console.log(task);
+  taskInput.value = '';
   render();
+}
+
+function enterkey() {
+  if (window.event.keyCode == 13 && taskInput.value != '') {
+    addTask();
+  }
 }
 
 function render() {
@@ -39,16 +50,16 @@ function render() {
     <div class="task-done">${taskList[i].taskContent}</div>
 
         <div>
-            <button onClick="toggleComplete('${taskList[i].id}')">Check</button>
-            <button onClick="deleteTask('${taskList[i].id}')">Delete</button>
+            <button onClick="toggleComplete('${taskList[i].id}')"><i class="fa-solid fa-check"></i></button>
+            <button onClick="deleteTask('${taskList[i].id}')"><i class="fa-solid fa-xmark"></i></button>
         </div>`;
     } else {
       resultHTML += `<div class="task">
     <div>${taskList[i].taskContent}</div>
 
         <div>
-            <button onClick="toggleComplete('${taskList[i].id}')">Check</button>
-            <button onClick="deleteTask('${taskList[i].id}')">Delete</button>
+            <button onClick="toggleComplete('${taskList[i].id}')"><i class="fa-regular fa-comment"></i></i></button>
+            <button onClick="deleteTask('${taskList[i].id}')"><i class="fa-solid fa-xmark"></i></button>
         </div>`;
     }
   }
