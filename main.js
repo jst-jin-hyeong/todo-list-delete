@@ -11,7 +11,7 @@
 
 // 유저가 값을 입력한다.
 let taskInput = document.getElementById('task-input');
-console.log(taskInput);
+// console.log(taskInput);
 
 // + 버튼을 클릭하면, 할일이 추가된다.
 // let addButton = document.getElementById('add-button');
@@ -22,7 +22,19 @@ let mode = 'all';
 let filterList = [];
 let doneList = [];
 
-console.log(tabs);
+//쿼리셀렉터 메뉴랑 언더바 둘 다 가져오기 -----------------
+//@연습
+// const qs = document.querySelectorAll(  'section.task-list-container div.task-tabs :nth-child(3)');
+// console.log(qs);
+const horizontalUnderline = document.getElementById('tab-underline');
+const horizontalMenus = document.querySelectorAll(
+  'section.task-list-container div.task-tabs :nth-of-type(n+2)'
+);
+horizontalMenus.forEach((menu) =>
+  menu.addEventListener('click', (e) => horizontalIndicator(e))
+);
+/////////여기서 e는 예약된 문자일까 아니면 뭘가. 저게 왜 이벤트일까.
+//menu()함수의 인자에는 뭐가 들어갈까? horizontalMenus의 항목들인 all, ongoing, done 이 들어간다.
 
 const icon = document.createElement('i');
 
@@ -163,6 +175,11 @@ function randomIDGenerate() {
 }
 
 // function horizontalIndicator(e) {
-
+function horizontalIndicator(e) {
+  horizontalUnderline.style.left = e.currentTarget.offsetLeft + 'px';
+  horizontalUnderline.style.width = e.currentTarget.offsetWidth + 'px';
+  horizontalUnderline.style.Top =
+    e.currentTarget.offsetTop + e.currentTarget.offsetHeight + 'px';
+}
 // }
 
