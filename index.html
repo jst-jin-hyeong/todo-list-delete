@@ -27,14 +27,22 @@
   <body>
     <section class="container">
       <h1>To Do List</h1>
-      <div class="input-area">
+      <!-- <div class="input-area">
         <input type="text" id="task-input" onkeyup="enterkey()" />
         <label for="task-label"><span>오늘의 할일은?</span></label>
         <button id="add-button" type="button">+</button>
+      </div> -->
+
+      <div class="input-area">
+        <form id="taskForm">
+          <input type="text" id="task-input" />
+          <label for="task-label"><span>오늘의 할일은?</span></label>
+          <button id="add-button" type="submit">+</button>
+        </form>
       </div>
 
       <section class="task-list-container">
-        <div class="tab-type">
+        <div class="task-tabs">
           <div id="tab-underline"></div>
           <div id="all">모두</div>
           <div id="ongoing">진행중</div>

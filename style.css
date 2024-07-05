@@ -67,16 +67,16 @@ body {
 }
 
 .task-list-container {
-  border: 1px solid lightgray;
+  border: 1px solid lightgray; 
   margin-top: 1em;
   position: relative;
 }
-.tab-type {
+.task-tabs {
   display: flex;
   border-bottom: 1px solid lightgray;
 }
 
-.tab-type div {
+.task-tabs div {
   padding: 1em;
   cursor: pointer;
 }
