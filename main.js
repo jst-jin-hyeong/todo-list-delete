@@ -44,7 +44,7 @@ function addTask(value) {
   console.log('clicked');
   console.log(task);
   taskInput.value = '';
-  render();
+  filter();
 }
 
 // function enterkey() {
@@ -111,7 +111,7 @@ function toggleComplete(id) {
       break;
     }
   }
-  render();
+  filter();
 }
 
 function deleteTask(id) {
@@ -123,17 +123,18 @@ function deleteTask(id) {
       break;
     }
   }
-  render();
+  filter();
 }
 
 function filter(event) {
-  mode = event.target.id;
+  if (event) {
+    mode = event.target.id;
+  }
   filterList = [];
   doneList = [];
   if (mode == 'all') {
     //전체 리스트를 보여주기
     console.log('all 이다');
-    render();
   } else if (mode == 'ongoing') {
     //
     for (let i = 0; i < taskList.length; i++) {
@@ -142,7 +143,6 @@ function filter(event) {
       }
     }
     console.log('ongoing 이다');
-    render();
   } else if (mode == 'done') {
     console.log('done 이다');
     for (let i = 0; i < taskList.length; i++) {
@@ -150,8 +150,8 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   }
+  render();
   console.log('진행중: ', filterList, ', 끝남: ', doneList);
 }
 
@@ -161,4 +161,8 @@ function randomIDGenerate() {
   // after the decimal.
   return '_' + Math.random().toString(36).substr(2, 9);
 }
+
+// function horizontalIndicator(e) {
+
+// }
 
